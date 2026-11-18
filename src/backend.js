@@ -1,7 +1,7 @@
 // Ponte entre a interface e o "motor" em Rust.
 // Quando roda fora do Tauri (no navegador, só pra testar a tela),
 // usa o localStorage e dados de demonstração.
-import { DEMO_RESULTS } from "./demo.js";
+import { DEMO_RESULTS, demoLibrary } from "./demo.js";
 
 export const isTauri = typeof window !== "undefined" && !!window.__TAURI_INTERNALS__;
 
@@ -18,6 +18,7 @@ function lsSet(key, val) {
 }
 
 export async function loadLibrary() {
+  if (!isTauri && location.search.includes("demo")) return demoLibrary();
   const raw = isTauri ? await invoke("load_library") : lsGet("zerei.biblioteca");
   if (!raw) return [];
   try {

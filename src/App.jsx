@@ -23,7 +23,7 @@ export default function App() {
   const [ready, setReady] = useState(false);
   const [games, setGames] = useState([]);
   const [settings, setSettings] = useState({});
-  const [view, setView] = useState("library");
+  const [view, setView] = useState(() => new URLSearchParams(location.search).get("view") || "library");
   const [statusFilter, setStatusFilter] = useState("all");
   const [tagFilter, setTagFilter] = useState({ tags: [], mode: "all" });
   const [openId, setOpenId] = useState(null);

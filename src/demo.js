@@ -45,3 +45,29 @@ export const DEMO_RESULTS = {
     }),
   ],
 };
+
+// Estante de exemplo para prints (abra no navegador com ?demo).
+export function demoLibrary() {
+  const now = Date.now();
+  const mk = (name, status, extra) => ({
+    id: name.replace(/\W+/g, "-").toLowerCase(), name, status, cover: null, customCover: "", summary: "",
+    platforms: [], genres: [], extras: [], screenshots: [], tags: [], rating: 0, hours: 0, startedAt: "",
+    finishedAt: "", notes: "", myPlatform: "", favorite: false, autoTagged: true, addedAt: now, updatedAt: now,
+    ...extra,
+  });
+  const y = (n) => Date.UTC(n, 5, 1) / 1000;
+  return [
+    mk("Elden Ring", "playing", { myPlatform: "PS5", hours: 64, rating: 10, favorite: true, releaseDate: y(2022), tags: ["RPG", "Soulslike", "Mundo aberto", "Fantasia sombria", "Difícil"], extras: [{ igdbId: 1, name: "Shadow of the Erdtree", kind: "Expansão", played: false }] }),
+    mk("The Witcher 3: Wild Hunt", "completed", { myPlatform: "PC", hours: 140, rating: 10, releaseDate: y(2015), finishedAt: "2024-03-10", tags: ["RPG", "Medieval", "Fantasia", "Mundo aberto", "História forte"], extras: [{ igdbId: 2, name: "Hearts of Stone", kind: "Expansão", played: true }, { igdbId: 3, name: "Blood and Wine", kind: "Expansão", played: true }] }),
+    mk("Hollow Knight", "finished", { myPlatform: "Switch", hours: 42, rating: 9, releaseDate: y(2017), finishedAt: "2024-08-10", tags: ["Metroidvania", "Indie", "Difícil", "2D"] }),
+    mk("Hades", "completed", { myPlatform: "PC", hours: 90, rating: 10, favorite: true, releaseDate: y(2020), finishedAt: "2025-02-01", tags: ["Roguelike", "Indie", "Mitologia grega"] }),
+    mk("Halo Infinite", "backlog", { myPlatform: "Series X|S", releaseDate: y(2021), tags: ["FPS", "Shooter", "Ficção científica", "Multiplayer"] }),
+    mk("Cyberpunk 2077", "paused", { myPlatform: "PC", hours: 30, rating: 8, releaseDate: y(2020), tags: ["RPG", "FPS", "Cyberpunk", "Mundo aberto"] }),
+    mk("Stardew Valley", "finished", { myPlatform: "Switch", hours: 120, rating: 9, releaseDate: y(2016), finishedAt: "2023-12-20", tags: ["Fazenda", "Simulação", "Relaxante / Cozy", "Co-op"] }),
+    mk("Chrono Trigger", "backlog", { myPlatform: "SNES", releaseDate: y(1995), tags: ["JRPG", "Clássico", "Pixel art"] }),
+    mk("Gears 5", "dropped", { myPlatform: "PC", hours: 6, rating: 6, releaseDate: y(2019), tags: ["TPS", "Shooter", "Co-op"] }),
+    mk("Kingdom Come: Deliverance", "backlog", { myPlatform: "PC", releaseDate: y(2018), tags: ["RPG", "Medieval", "Histórico", "Primeira pessoa"] }),
+    mk("Celeste", "finished", { myPlatform: "PC", hours: 12, rating: 9, releaseDate: y(2018), finishedAt: "2025-06-02", tags: ["Plataforma", "Indie", "Pixel art", "Difícil"] }),
+    mk("Hollow Knight: Silksong", "wishlist", { releaseDate: y(2025), tags: ["Metroidvania", "Indie"] }),
+  ];
+}

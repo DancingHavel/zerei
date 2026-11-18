@@ -1,0 +1,3 @@
+# Pasta de compilação com caminho curto (o Windows falha com caminhos muito longos).
+[build]
+target-dir = "C:/zerei-build"
